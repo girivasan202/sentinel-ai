@@ -10,22 +10,22 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- 2. DEEP NAVY / CYBER-CYAN CSS ENGINE ---
+# --- 2. DEEP NAVY CSS ENGINE (CONTRAST & LAYOUT FIXED) ---
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600;800&display=swap');
 
-    /* Global Base: Deep Navy/Charcoal */
+    /* Global Base */
     .stApp {
-        background-color: #070B19 !important; /* Deepest Navy Base */
+        background-color: #070B19 !important; 
         color: #FFFFFF !important; 
         font-family: 'Inter', sans-serif !important;
     }
 
-    /* Solid Charcoal Sidebar */
+    /* Sidebar */
     [data-testid="stSidebar"] {
-        background-color: #0F1423 !important; /* Charcoal Navy */
-        border-right: 1px solid #00E5FF !important; /* Electric Cyan Border */
+        background-color: #0F1423 !important; 
+        border-right: 1px solid #00E5FF !important; 
         min-width: 320px !important;
         max-width: 320px !important;
         transform: none !important;
@@ -35,16 +35,24 @@ st.markdown("""
     [data-testid="stMainView"] { margin-left: 0px !important; }
 
     /* Headers & Typography */
-    h1, h2, h3, h4, h5, label {
+    h1, h2, h3, h4, h5 {
         font-family: 'Fira Code', monospace !important;
-        color: #00E5FF !important; /* Electric Cyan */
+        color: #00E5FF !important; 
         text-transform: uppercase;
         letter-spacing: 1.5px;
         font-weight: 700 !important;
     }
     
+    /* FIX: Force all standard labels, captions, and radio text to be pure white and bold */
+    label, p, span, .stMarkdown, .stCaption {
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+        opacity: 1 !important;
+        font-weight: 600 !important;
+    }
+    
     .brand-sidebar { 
-        color: #00FF66 !important; /* Neon Green Branding */
+        color: #00FF66 !important; 
         font-family: 'Fira Code', monospace;
         font-weight: 800; 
         font-size: 2.2rem; 
@@ -59,7 +67,7 @@ st.markdown("""
         gap: 0px;
     }
     .stTabs [data-baseweb="tab"] {
-        color: #6B7280 !important;
+        color: #8892B0 !important;
         font-family: 'Fira Code', monospace !important;
         font-size: 1rem !important;
         font-weight: 600 !important;
@@ -68,18 +76,18 @@ st.markdown("""
     .stTabs [aria-selected="true"] {
         color: #FFFFFF !important; 
         -webkit-text-fill-color: #FFFFFF !important;
-        border-bottom: 3px solid #00E5FF !important; /* Cyan Active Tab */
+        border-bottom: 3px solid #00E5FF !important; 
         background-color: #0F1423 !important;
     }
 
-    /* Bulletproof Input Fields (High Contrast White Text) */
+    /* Input Fields */
     .stTextInput input, 
     .stTextArea textarea, 
     [data-baseweb="base-input"] input, 
     [data-baseweb="textarea"] textarea,
     textarea, input {
-        background-color: #151A2C !important; /* Darker Input Background */
-        border: 1px solid #00E5FF !important; /* Cyan Border */
+        background-color: #151A2C !important; 
+        border: 1px solid #00E5FF !important; 
         color: #FFFFFF !important; 
         -webkit-text-fill-color: #FFFFFF !important; 
         font-family: 'Fira Code', monospace !important;
@@ -90,31 +98,32 @@ st.markdown("""
     
     .stTextInput input:focus, 
     .stTextArea textarea:focus {
-        border-color: #00FF66 !important; /* Neon Green on Focus */
+        border-color: #00FF66 !important; 
         box-shadow: 0 0 12px rgba(0, 255, 102, 0.2) !important;
     }
 
     /* Core Action Buttons */
     .stButton button {
-        background-color: #00E5FF !important; /* Solid Electric Cyan */
-        color: #070B19 !important; /* Deep Navy Text */
+        background-color: #00E5FF !important; 
+        color: #070B19 !important; 
         -webkit-text-fill-color: #070B19 !important;
         font-family: 'Fira Code', monospace !important;
         font-weight: 800 !important;
         font-size: 1rem !important;
         border: none !important;
         border-radius: 2px !important;
-        height: 3.2rem; 
+        height: 3.5rem; /* Slightly taller for impact */
         width: 100%;
         transition: all 0.3s ease !important;
+        margin-top: 10px;
     }
     .stButton button:hover {
-        background-color: #00FF66 !important; /* Shifts to Neon Green */
+        background-color: #00FF66 !important; 
         box-shadow: 0 0 15px rgba(0, 255, 102, 0.4) !important;
         transform: translateY(-2px);
     }
 
-    /* Secondary Download / Outline Buttons */
+    /* Secondary Buttons */
     div[data-testid="stDownloadButton"] button {
         background-color: transparent !important;
         border: 1px solid #00FF66 !important;
@@ -127,10 +136,10 @@ st.markdown("""
         -webkit-text-fill-color: #070B19 !important;
     }
 
-    /* Metric Visuals */
+    /* Metrics */
     [data-testid="stMetricValue"] {
         font-family: 'Fira Code', monospace !important;
-        color: #00FF66 !important; /* Neon Green Metrics */
+        color: #00FF66 !important; 
         -webkit-text-fill-color: #00FF66 !important;
         font-size: 3.5rem !important;
         font-weight: 800 !important;
@@ -141,14 +150,16 @@ st.markdown("""
         font-family: 'Inter', sans-serif !important;
     }
 
-    /* Threat Alert Containers */
+    /* Threat Alerts */
     [data-testid="stVerticalBlockBorderWrapper"] {
-        border: 1px solid #FF3366 !important; /* Alert Red */
+        border: 1px solid #FF3366 !important; 
         background-color: rgba(255, 51, 102, 0.05) !important;
         border-left: 4px solid #FF3366 !important;
+        padding: 15px !important;
+        margin-bottom: 10px !important;
     }
 
-    /* Dataframes and Tables */
+    /* Tables */
     [data-testid="stDataFrame"] { background-color: #0F1423 !important; }
     .stDataFrame th { 
         color: #00E5FF !important; 
@@ -162,7 +173,7 @@ st.markdown("""
         font-family: 'Inter', sans-serif !important;
     }
 
-    /* Hide Native UI Mechanics */
+    /* Hide Native UI */
     #MainMenu, footer, header {visibility: hidden;}
     [data-testid="stSidebarCollapsedControl"], button[aria-label="Close sidebar"], button[aria-label="Open sidebar"] { display: none !important; }
     </style>
@@ -209,7 +220,6 @@ def run_audit(code):
 # --- 5. FLAWLESS PATCH INTEGRATION ---
 def apply_remediation(code, findings):
     lines = code.splitlines()
-    
     for f in findings:
         idx = f['line'] - 1
         line = lines[idx]
@@ -235,7 +245,7 @@ with st.sidebar:
     
     st.markdown("### AUDIT LEDGER")
     if not st.session_state.logs:
-        st.caption("No historical telemetry found.")
+        st.markdown("<span style='color:#FFFFFF; font-weight:bold;'>No historical telemetry found.</span>", unsafe_allow_html=True)
     else:
         for i, log in enumerate(st.session_state.logs):
             with st.expander(f"{log['name']} [{log['score']}%]"):
@@ -266,50 +276,60 @@ with st.sidebar:
 # --- 7. MAIN INTERFACE ---
 tabs = st.tabs(["[ NEURAL DIAGNOSTIC ]", "[ COMPLIANCE MATRIX ]", "[ RISK TELEMETRY ]"])
 
-# TAB 1: CORE AUDIT
+# TAB 1: CORE AUDIT (LAYOUT FIXED: Stacked Vertically for tight UI)
 with tabs[0]:
-    col_left, col_right = st.columns([2.5, 1.5], gap="large")
+    st.markdown("### INGEST STREAM")
     
-    with col_left:
-        st.markdown("### INGEST STREAM")
-        input_type = st.radio("VECTOR:", ["RAW SOURCE", "FILE UPLOAD"], horizontal=True, label_visibility="collapsed")
-        
-        if input_type == "RAW SOURCE":
-            st.session_state.payload = st.text_area("INJECT PAYLOAD:", value=st.session_state.payload, height=450)
-        else:
-            uploaded_file = st.file_uploader("UPLOAD TARGET FILE", type=["py", "js", "txt", "env"])
-            if uploaded_file:
-                st.session_state.payload = uploaded_file.getvalue().decode()
-                
-    with col_right:
-        st.markdown("### EXECUTION PROTOCOL")
+    # Mode selector directly above input
+    input_type = st.radio("VECTOR:", ["RAW SOURCE", "FILE UPLOAD"], horizontal=True)
+    
+    # Input Area takes full width
+    if input_type == "RAW SOURCE":
+        st.session_state.payload = st.text_area("INJECT PAYLOAD:", value=st.session_state.payload, height=400, label_visibility="collapsed")
+    else:
+        uploaded_file = st.file_uploader("UPLOAD TARGET FILE", type=["py", "js", "txt", "env"], label_visibility="collapsed")
+        if uploaded_file:
+            st.session_state.payload = uploaded_file.getvalue().decode()
+            
+    st.divider()
+    
+    # Execution Protocol stacked directly below input
+    st.markdown("### EXECUTION PROTOCOL")
+    
+    c1, c2 = st.columns([1, 2]) # 1/3 for button, 2/3 for metric/results
+    
+    with c1:
         if st.button("INITIATE SCAN"):
             if st.session_state.payload:
                 st.session_state.findings, health_score = run_audit(st.session_state.payload)
                 st.session_state.fixed = False
-                st.metric("INTEGRITY INDEX", f"{health_score}%")
+                st.session_state.last_score = health_score
             else:
                 st.error("ERR: NULL PAYLOAD.")
                 
-        if st.session_state.findings:
-            st.markdown("### DETECTED ANOMALIES")
-            for item in st.session_state.findings:
-                with st.container(border=True):
-                    st.markdown(f"<span style='color:#FF3366; font-family:Fira Code; font-weight:700;'>{item['type']}</span>", unsafe_allow_html=True)
-                    st.markdown(f"**LINE:** `{item['line']}`")
-                    
-            st.divider()
-            if st.button("DEPLOY HOTFIX"):
-                st.session_state.payload = apply_remediation(st.session_state.payload, st.session_state.findings)
-                st.session_state.findings = []
-                st.session_state.fixed = True
-                st.success("SYS: VULNERABILITIES NEUTRALIZED.")
-                st.rerun()
+    with c2:
+        if hasattr(st.session_state, 'last_score'):
+            st.metric("INTEGRITY INDEX", f"{st.session_state.last_score}%")
+            
+    # Threats display cleanly below
+    if st.session_state.findings:
+        st.markdown("### DETECTED ANOMALIES")
+        for item in st.session_state.findings:
+            with st.container(border=True):
+                st.markdown(f"<span style='color:#FF3366; font-family:Fira Code; font-weight:700;'>{item['type']}</span>", unsafe_allow_html=True)
+                st.markdown(f"**LINE:** `{item['line']}`")
                 
-        if st.session_state.fixed:
-            st.download_button("DOWNLOAD SECURE BUILD", st.session_state.payload, "sentinel_secure.py")
-        elif st.session_state.payload and not st.session_state.findings:
-            st.info("SYS: SYSTEM OPTIMAL. ZERO ANOMALIES DETECTED.")
+        if st.button("DEPLOY HOTFIX"):
+            st.session_state.payload = apply_remediation(st.session_state.payload, st.session_state.findings)
+            st.session_state.findings = []
+            st.session_state.fixed = True
+            st.success("SYS: VULNERABILITIES NEUTRALIZED.")
+            st.rerun()
+            
+    if st.session_state.fixed:
+        st.download_button("DOWNLOAD SECURE BUILD", st.session_state.payload, "sentinel_secure.py")
+    elif st.session_state.payload and not st.session_state.findings and hasattr(st.session_state, 'last_score'):
+        st.info("SYS: SYSTEM OPTIMAL. ZERO ANOMALIES DETECTED.")
 
 # TAB 2: COMPLIANCE MATRIX
 with tabs[1]:
@@ -327,7 +347,7 @@ with tabs[1]:
         table_presentation.columns = ["TIMESTAMP", "DUMP ALIAS", "SECURITY STATUS", "SCORE"]
         st.dataframe(table_presentation, use_container_width=True, hide_index=True)
     else:
-        st.caption("SYS: NO DATA FOUND. INITIATE SCAN TO GENERATE MATRIX.")
+        st.markdown("<span style='color:#FFFFFF; font-weight:bold;'>SYS: NO DATA FOUND. INITIATE SCAN TO GENERATE MATRIX.</span>", unsafe_allow_html=True)
 
 # TAB 3: TELEMETRY
 with tabs[2]:
@@ -338,4 +358,4 @@ with tabs[2]:
         chart_data.columns = ["DUMP ALIAS", "INTEGRITY SCORE"]
         st.area_chart(chart_data, x="DUMP ALIAS", y="INTEGRITY SCORE", height=400)
     else:
-        st.caption("SYS: INSUFFICIENT DATA FOR VISUALIZATION.")
+        st.markdown("<span style='color:#FFFFFF; font-weight:bold;'>SYS: INSUFFICIENT DATA FOR VISUALIZATION.</span>", unsafe_allow_html=True)
