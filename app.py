@@ -5,21 +5,28 @@ from datetime import datetime
 
 # --- 1. CORE SYSTEM CONFIG ---
 st.set_page_config(
-    page_title="SENTINEL // NEURAL AUDIT", 
+    page_title="SENTINEL // GALACTIC", 
     layout="wide", 
     initial_sidebar_state="expanded"
 )
 
-# --- 2. BLACK HAT / CYBERSEC CSS ENGINE ---
+# --- 2. GALACTIC / DEEP SPACE CSS ENGINE ---
 st.markdown("""
     <style>
-    /* Global Dark Theme */
-    .stApp { background-color: #050505 !important; color: #00FF41 !important; font-family: 'Courier New', Courier, monospace !important; }
-    
-    /* Sidebar Lock & Styling */
-    [data-testid="stSidebar"] { 
-        background-color: #0a0a0a !important; 
-        border-right: 1px solid #00FF41 !important; 
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+    /* Global Cosmic Background */
+    .stApp {
+        background: radial-gradient(circle at top, #1A0B2E 0%, #05010F 100%) !important;
+        color: #E2D9F3 !important;
+        font-family: 'Rajdhani', sans-serif !important;
+    }
+
+    /* Frosted Glass Sidebar */
+    [data-testid="stSidebar"] {
+        background: rgba(10, 5, 20, 0.4) !important;
+        backdrop-filter: blur(16px) !important;
+        border-right: 1px solid rgba(0, 240, 255, 0.15) !important;
         min-width: 320px !important;
         max-width: 320px !important;
         transform: none !important;
@@ -27,38 +34,106 @@ st.markdown("""
     }
     
     [data-testid="stMainView"] { margin-left: 0px !important; }
+
+    /* Sci-Fi Headings */
+    h1, h2, h3, h4, h5 {
+        font-family: 'Orbitron', sans-serif !important;
+        color: #00F0FF !important;
+        text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+        letter-spacing: 2px;
+    }
     
-    /* Override all text to Neon Green Terminal Font */
-    h1, h2, h3, h4, h5, h6, p, span, div, label { color: #00FF41 !important; font-family: 'Courier New', Courier, monospace !important; }
-    
-    /* Brand Header */
-    .brand-sidebar { color: #FF003C !important; font-weight: 900; font-size: 2.2rem; margin-bottom: 20px; letter-spacing: 3px; text-shadow: 0 0 8px #FF003C; }
-    
-    /* Tab Styling (Terminal Style) */
-    .stTabs [data-baseweb="tab-list"] { background-color: #050505; border-bottom: 1px solid #00FF41; gap: 0px; }
-    .stTabs [data-baseweb="tab"] { color: #444444 !important; background-color: transparent; border: none; font-weight: bold; padding: 10px 20px; }
-    .stTabs [aria-selected="true"] { color: #00FF41 !important; border-bottom: 3px solid #00FF41 !important; background-color: #111111 !important; text-shadow: 0 0 5px #00FF41; }
-    
-    /* Inputs & Text Areas */
-    textarea, input { background-color: #000000 !important; border: 1px solid #00FF41 !important; color: #00FF41 !important; font-family: 'Courier New', Courier, monospace !important; border-radius: 0px !important; }
-    textarea:focus, input:focus { box-shadow: 0 0 8px #00FF41 !important; }
-    
-    /* Core Buttons */
-    .stButton button { background-color: #000000 !important; color: #00FF41 !important; border: 1px solid #00FF41 !important; border-radius: 0px !important; font-weight: bold; letter-spacing: 1px; transition: all 0.2s ease; height: 3rem; width: 100%; }
-    .stButton button:hover { background-color: #00FF41 !important; color: #000000 !important; box-shadow: 0 0 15px #00FF41; }
-    
-    /* Action / Download Buttons */
-    div[data-testid="stDownloadButton"] button { border-color: #FF003C !important; color: #FF003C !important; }
-    div[data-testid="stDownloadButton"] button:hover { background-color: #FF003C !important; color: #000000 !important; box-shadow: 0 0 15px #FF003C; }
-    
-    /* Health Score Metric Styling */
-    [data-testid="stMetricValue"] { color: #FF003C !important; text-shadow: 0 0 10px #FF003C; font-size: 3.5rem !important; font-weight: 900; }
-    [data-testid="stMetricLabel"] { color: #00FF41 !important; font-size: 1.2rem !important; letter-spacing: 2px; }
-    
-    /* Container Borders */
-    [data-testid="stVerticalBlockBorderWrapper"] { border: 1px solid #333333 !important; border-radius: 0px !important; background-color: #0a0a0a !important; }
-    
-    /* Hide Streamlit Native UI */
+    .brand-sidebar { 
+        color: #B000FF !important; 
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900; 
+        font-size: 2.2rem; 
+        margin-bottom: 20px; 
+        letter-spacing: 4px; 
+        text-shadow: 0 0 15px #B000FF; 
+    }
+
+    /* Holographic Tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        background-color: transparent !important;
+        border-bottom: 1px solid rgba(176, 0, 255, 0.3) !important;
+        gap: 10px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        color: #8E7CA6 !important;
+        font-family: 'Orbitron', sans-serif !important;
+        font-size: 1.1rem;
+        padding-bottom: 10px;
+    }
+    .stTabs [aria-selected="true"] {
+        color: #00F0FF !important;
+        border-bottom: 3px solid #00F0FF !important;
+        background: linear-gradient(0deg, rgba(0, 240, 255, 0.1) 0%, transparent 100%) !important;
+        text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+    }
+
+    /* Terminal Text Areas & Inputs */
+    textarea, input {
+        background: rgba(5, 1, 15, 0.6) !important;
+        border: 1px solid rgba(0, 240, 255, 0.3) !important;
+        color: #00F0FF !important;
+        font-family: 'Courier New', Courier, monospace !important;
+        border-radius: 4px !important;
+    }
+    textarea:focus, input:focus {
+        border-color: #B000FF !important;
+        box-shadow: 0 0 15px rgba(176, 0, 255, 0.4) !important;
+    }
+
+    /* Animated Gradient Buttons */
+    .stButton button {
+        background: linear-gradient(90deg, #4A00E0 0%, #8E2DE2 50%, #00F0FF 100%) !important;
+        background-size: 200% auto !important;
+        color: white !important;
+        font-family: 'Orbitron', sans-serif !important;
+        font-weight: 700;
+        border: none !important;
+        border-radius: 4px !important;
+        height: 3.2rem; 
+        width: 100%;
+        transition: 0.4s !important;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .stButton button:hover {
+        background-position: right center !important;
+        box-shadow: 0 0 25px rgba(0, 240, 255, 0.6) !important;
+        transform: scale(1.02);
+    }
+
+    /* Secondary Download Button */
+    div[data-testid="stDownloadButton"] button {
+        background: transparent !important;
+        border: 1px solid #00F0FF !important;
+        color: #00F0FF !important;
+    }
+    div[data-testid="stDownloadButton"] button:hover {
+        background: rgba(0, 240, 255, 0.1) !important;
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.5) !important;
+    }
+
+    /* Glowing Health Metric */
+    [data-testid="stMetricValue"] {
+        font-family: 'Orbitron', sans-serif !important;
+        color: #B000FF !important;
+        text-shadow: 0 0 20px rgba(176, 0, 255, 0.8) !important;
+        font-size: 4rem !important;
+    }
+    [data-testid="stMetricLabel"] { color: #E2D9F3 !important; font-size: 1.2rem !important; font-family: 'Orbitron', sans-serif !important;}
+
+    /* Threat Containers */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        border: 1px solid rgba(255, 0, 60, 0.4) !important;
+        background: rgba(255, 0, 60, 0.05) !important;
+        border-radius: 4px !important;
+    }
+
+    /* Hide Native UI Mechanics */
     #MainMenu, footer, header {visibility: hidden;}
     [data-testid="stSidebarCollapsedControl"], button[aria-label="Close sidebar"], button[aria-label="Open sidebar"] { display: none !important; }
     </style>
@@ -71,86 +146,86 @@ if "findings" not in st.session_state: st.session_state.findings = []
 if "fixed" not in st.session_state: st.session_state.fixed = False
 if "scan_name" not in st.session_state: st.session_state.scan_name = ""
 
-# --- 4. AGGRESSIVE AUDIT ENGINE ---
+# --- 4. BULLETPROOF AUDIT ENGINE ---
 def run_audit(code):
     detected = []
     score = 100
     lines = code.splitlines()
     
     for idx, line in enumerate(lines, 1):
-        # Ignore lines that are already patched (using os.getenv)
         if "os.getenv" in line or "os.environ" in line:
             continue
             
-        # 1. AWS Keys
         aws_match = re.search(r'AKIA[0-9A-Z]{16}', line)
         if aws_match:
-            detected.append({"type": "CRITICAL: AWS_ACCESS_KEY", "line": idx, "token": aws_match.group(0)})
+            detected.append({"type": "AWS_ACCESS_KEY", "line": idx, "token": aws_match.group(0)})
             score -= 40
+            continue
             
-        # 2. GCP Keys
         gcp_match = re.search(r'AIza[0-9A-Za-z-_]{35}', line)
         if gcp_match:
-            detected.append({"type": "CRITICAL: GCP_API_KEY", "line": idx, "token": gcp_match.group(0)})
+            detected.append({"type": "GCP_API_KEY", "line": idx, "token": gcp_match.group(0)})
             score -= 40
+            continue
             
-        # 3. Hardcoded Passwords, Tokens, API Keys (Aggressive Match)
-        # Looks for: password = "..." or api_key: '...'
+        # Group 2 specifically captures EXACTLY what is inside the quotes.
         secret_match = re.search(r'(?i)(api_key|apikey|password|passwd|pwd|secret|token|auth)\s*[:=]\s*([\'"][^\'"]+[\'"])', line)
         if secret_match:
-            detected.append({"type": f"HIGH: HARDCODED_{secret_match.group(1).upper()}", "line": idx, "token": secret_match.group(2)})
+            var_type = secret_match.group(1).upper()
+            token = secret_match.group(2)
+            detected.append({"type": f"HARDCODED_SECRET_{var_type}", "line": idx, "token": token})
             score -= 30
 
     return detected, max(score, 0)
 
+# --- 5. FLAWLESS REMEDIATION ENGINE ---
 def apply_remediation(code, findings):
-    new_lines = code.splitlines()
+    lines = code.splitlines()
+    
     for f in findings:
         idx = f['line'] - 1
-        line = new_lines[idx]
+        line = lines[idx]
         
-        # Strip exact strings and replace with environment variables
-        if "AWS_ACCESS_KEY" in f['type']:
-            new_lines[idx] = re.sub(r'AKIA[0-9A-Z]{16}', 'os.getenv("AWS_ACCESS_KEY_ID")', line)
-        elif "GCP_API_KEY" in f['type']:
-            new_lines[idx] = re.sub(r'AIza[0-9A-Za-z-_]{35}', 'os.getenv("GCP_API_KEY")', line)
-        elif "HARDCODED_" in f['type']:
-            # Extracts the variable name being assigned and uses it for the env var
-            new_lines[idx] = re.sub(r'(?i)(api_key|apikey|password|passwd|pwd|secret|token|auth)\s*[:=]\s*([\'"][^\'"]+[\'"])', 
-                                   r'\1 = os.getenv("\1".upper())', line)
+        # We use a hard .replace() based on the exact token we saved. Regex cannot fail us here.
+        if f['type'] == "AWS_ACCESS_KEY":
+            lines[idx] = line.replace(f['token'], 'os.getenv("AWS_ACCESS_KEY_ID")')
+        elif f['type'] == "GCP_API_KEY":
+            lines[idx] = line.replace(f['token'], 'os.getenv("GCP_API_KEY")')
+        elif "HARDCODED_SECRET_" in f['type']:
+            var_name = f['type'].replace("HARDCODED_SECRET_", "")
+            lines[idx] = line.replace(f['token'], f'os.getenv("{var_name}")')
             
-    output_code = "\n".join(new_lines)
+    output_code = "\n".join(lines)
     if "import os" not in output_code:
         output_code = "import os\n" + output_code
     return output_code
 
-# --- 5. TERMINAL SIDEBAR ---
+# --- 6. COMMAND SIDEBAR ---
 with st.sidebar:
-    st.markdown("<div class='brand-sidebar'>SENTINEL // OS</div>", unsafe_allow_html=True)
-    st.markdown("`SYSTEM STATUS: ONLINE`")
-    st.markdown("`ENCRYPTION: AES-256`")
+    st.markdown("<div class='brand-sidebar'>SENTINEL</div>", unsafe_allow_html=True)
+    st.markdown("<span style='color:#00F0FF; font-family:Orbitron;'>SYS_STATUS: // ONLINE</span>", unsafe_allow_html=True)
     st.divider()
     
-    st.markdown("### [ SESSION LOGS ]")
+    st.markdown("### DATA LOGS")
     if not st.session_state.logs:
-        st.caption("> No previous dumps found.")
+        st.caption("No historical telemetry found.")
     else:
         for i, log in enumerate(st.session_state.logs):
-            with st.expander(f"> {log['name']} [{log['score']}%]"):
+            with st.expander(f"{log['name']} [{log['score']}%]"):
                 st.caption(f"Status: {log['status']}")
-                if st.button("RESTORE DUMP", key=f"res_{i}"):
+                if st.button("RESTORE", key=f"res_{i}"):
                     st.session_state.payload = log['content']
                     st.session_state.findings = []
                     st.session_state.fixed = False
                     st.rerun()
                     
     st.divider()
-    st.markdown("### [ COMMIT TO LEDGER ]")
-    st.session_state.scan_name = st.text_input("DUMP ALIAS:", value=f"SEC_SCAN_v{len(st.session_state.logs) + 1}")
+    st.markdown("### COMMIT PROFILE")
+    st.session_state.scan_name = st.text_input("ASSIGN ALIAS:", value=f"STELLAR_SCAN_{len(st.session_state.logs) + 1}")
     
     if st.button("SAVE TELEMETRY"):
         if st.session_state.payload:
-            current_status = "COMPROMISED" if st.session_state.findings else "SECURE"
+            current_status = "CRITICAL" if st.session_state.findings else "SECURE"
             current_score = 100 - (len(st.session_state.findings) * 30)
             st.session_state.logs.append({
                 "name": st.session_state.scan_name,
@@ -161,71 +236,79 @@ with st.sidebar:
             })
             st.rerun()
 
-# --- 6. MAIN TERMINAL WORKSPACE ---
-tabs = st.tabs(["[ TERMINAL ]", "[ EXPLOIT DB ]", "[ COMPLIANCE ]", "[ TELEMETRY ]"])
+# --- 7. MAIN INTERFACE ---
+tabs = st.tabs(["[ NEURAL DIAGNOSTIC ]", "[ COMPLIANCE MATRIX ]", "[ RISK TELEMETRY ]"])
 
 # TAB 1: CORE AUDIT
 with tabs[0]:
     col_left, col_right = st.columns([2.5, 1.5], gap="large")
     
     with col_left:
-        st.markdown("### >_ INPUT STREAM")
+        st.markdown("### INPUT STREAM")
         input_type = st.radio("VECTOR:", ["RAW TEXT", "FILE UPLOAD"], horizontal=True, label_visibility="collapsed")
         
         if input_type == "RAW TEXT":
-            st.session_state.payload = st.text_area("INJECT CODE HERE:", value=st.session_state.payload, height=450)
+            st.session_state.payload = st.text_area("INJECT PAYLOAD:", value=st.session_state.payload, height=450)
         else:
-            uploaded_file = st.file_uploader("UPLOAD TARGET (.py, .js, .env)", type=["py", "js", "txt", "env"])
+            uploaded_file = st.file_uploader("UPLOAD TARGET FILE", type=["py", "js", "txt", "env"])
             if uploaded_file:
                 st.session_state.payload = uploaded_file.getvalue().decode()
                 
     with col_right:
-        st.markdown("### >_ COMMAND EXECUTION")
-        if st.button("INITIATE NEURAL SCAN"):
+        st.markdown("### COMMAND EXECUTION")
+        if st.button("INITIATE SCAN"):
             if st.session_state.payload:
                 st.session_state.findings, health_score = run_audit(st.session_state.payload)
                 st.session_state.fixed = False
-                st.metric("INTEGRITY SCORE", f"{health_score}%")
+                st.metric("INTEGRITY INDEX", f"{health_score}%")
             else:
                 st.error("ERR: NULL PAYLOAD.")
                 
         if st.session_state.findings:
-            st.markdown("### >_ THREATS DETECTED")
+            st.markdown("### DETECTED ANOMALIES")
             for item in st.session_state.findings:
                 with st.container(border=True):
-                    st.markdown(f"<span style='color:#FF003C; font-weight:bold;'>{item['type']}</span>", unsafe_allow_html=True)
-                    st.markdown(f"`LINE: {item['line']}`")
+                    st.markdown(f"<span style='color:#FF003C; font-family:Orbitron; font-weight:bold;'>{item['type']}</span>", unsafe_allow_html=True)
+                    st.markdown(f"**LINE REGISTRY:** `{item['line']}`")
                     
             st.divider()
-            if st.button("EXECUTE HOTFIX PATCH"):
+            if st.button("DEPLOY HOTFIX"):
                 st.session_state.payload = apply_remediation(st.session_state.payload, st.session_state.findings)
                 st.session_state.findings = []
                 st.session_state.fixed = True
-                st.success("SYS: MALICIOUS STRINGS SANITIZED.")
+                st.success("SYS: VULNERABILITIES NEUTRALIZED.")
                 st.rerun()
                 
         if st.session_state.fixed:
-            st.download_button("DOWNLOAD SANITIZED BUILD", st.session_state.payload, "sentinel_patched.py")
+            st.download_button("DOWNLOAD SECURE BUILD", st.session_state.payload, "sentinel_secure.py")
         elif st.session_state.payload and not st.session_state.findings:
-            st.info("SYS: 0 EXPLOITS DETECTED. SYSTEM SECURE.")
+            st.info("SYS: SYSTEM OPTIMAL. ZERO ANOMALIES DETECTED.")
 
-# TAB 2: EXPLOIT DB
+# TAB 2: COMPLIANCE MATRIX
 with tabs[1]:
-    st.markdown("### >_ KNOWN VULNERABILITY DATABASE")
-    db_data = pd.DataFrame({
-        "CVE ID": ["CVE-2024-1011", "CVE-2023-4492", "CVE-2024-0091", "CVE-2023-8812"],
-        "THREAT VECTOR": ["AWS Root Key Exposure", "Hardcoded JWT Token", "GCP Service Account Leak", "SQL Password in Plaintext"],
-        "SEVERITY": ["CRITICAL", "HIGH", "CRITICAL", "HIGH"],
-        "AUTO-REMEDIATION": ["Supported", "Supported", "Supported", "Supported"]
-    })
-    st.dataframe(db_data, use_container_width=True, hide_index=True)
-
-# TAB 3: COMPLIANCE MATRIX
-with tabs[2]:
-    st.markdown("### >_ ISO/SOC2 COMPLIANCE LEDGER")
-    
+    st.markdown("### ISO/SOC2 LEDGER")
     if st.session_state.logs:
         log_records = pd.DataFrame(st.session_state.logs)
-        
         m1, m2, m3 = st.columns(3)
         m1.metric("TOTAL SCANS", len(log_records))
+        m2.metric("SECURE BUILDS", len(log_records[log_records['status'] == 'SECURE']))
+        m3.metric("AVG INTEGRITY", f"{log_records['score'].mean():.1f}%")
+        
+        st.divider()
+        st.markdown("#### RAW DATA STREAM")
+        table_presentation = log_records[['date', 'name', 'status', 'score']].copy()
+        table_presentation.columns = ["TIMESTAMP", "DUMP ALIAS", "SECURITY STATUS", "SCORE"]
+        st.dataframe(table_presentation, use_container_width=True, hide_index=True)
+    else:
+        st.caption("SYS: NO DATA FOUND. INITIATE SCAN TO GENERATE MATRIX.")
+
+# TAB 3: TELEMETRY
+with tabs[2]:
+    st.markdown("### RISK TELEMETRY")
+    if st.session_state.logs:
+        log_records = pd.DataFrame(st.session_state.logs)
+        chart_data = log_records[['name', 'score']].copy()
+        chart_data.columns = ["DUMP ALIAS", "INTEGRITY SCORE"]
+        st.area_chart(chart_data, x="DUMP ALIAS", y="INTEGRITY SCORE", height=400)
+    else:
+        st.caption("SYS: INSUFFICIENT DATA FOR VISUALIZATION.")
