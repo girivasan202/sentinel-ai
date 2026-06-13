@@ -10,23 +10,22 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- 2. HIGH-VISIBILITY GALACTIC CSS ENGINE ---
+# --- 2. BULLETPROOF VISIBILITY CSS ENGINE ---
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700;900&display=swap');
 
     /* Global Cosmic Background */
     .stApp {
-        background: #05010F !important; 
+        background: #030008 !important; 
         color: #FFFFFF !important; 
         font-family: 'Rajdhani', sans-serif !important;
-        font-size: 16px !important;
     }
 
     /* Frosted Glass Sidebar */
     [data-testid="stSidebar"] {
-        background: rgba(10, 5, 20, 0.85) !important; 
-        border-right: 2px solid rgba(0, 240, 255, 0.3) !important;
+        background: rgba(5, 2, 15, 0.95) !important; 
+        border-right: 2px solid #00F0FF !important;
         min-width: 320px !important;
         max-width: 320px !important;
         transform: none !important;
@@ -36,11 +35,11 @@ st.markdown("""
     [data-testid="stMainView"] { margin-left: 0px !important; }
 
     /* Sci-Fi Headings */
-    h1, h2, h3, h4, h5 {
+    h1, h2, h3, h4, h5, label {
         font-family: 'Orbitron', sans-serif !important;
         color: #00F0FF !important;
-        text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
-        letter-spacing: 1px;
+        text-shadow: 0 0 5px rgba(0, 240, 255, 0.5) !important;
+        font-weight: 900 !important;
     }
     
     .brand-sidebar { 
@@ -49,44 +48,50 @@ st.markdown("""
         font-weight: 900; 
         font-size: 2.2rem; 
         margin-bottom: 20px; 
-        letter-spacing: 2px; 
         text-shadow: 0 0 10px #B000FF; 
     }
 
     /* Holographic Tabs - High Contrast */
     .stTabs [data-baseweb="tab-list"] {
         background-color: transparent !important;
-        border-bottom: 2px solid rgba(176, 0, 255, 0.4) !important;
-        gap: 10px;
+        border-bottom: 2px solid #B000FF !important;
     }
     .stTabs [data-baseweb="tab"] {
-        color: #A090B0 !important;
+        color: #888888 !important;
         font-family: 'Orbitron', sans-serif !important;
-        font-size: 1.1rem;
-        font-weight: bold;
-        padding-bottom: 10px;
+        font-size: 1.2rem !important;
+        font-weight: 900 !important;
     }
     .stTabs [aria-selected="true"] {
         color: #FFFFFF !important; 
+        -webkit-text-fill-color: #FFFFFF !important;
         border-bottom: 4px solid #00F0FF !important;
-        background: rgba(0, 240, 255, 0.1) !important;
-        text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+        background: rgba(0, 240, 255, 0.15) !important;
+        text-shadow: 0 0 10px #00F0FF !important;
     }
 
-    /* Terminal Text Areas & Inputs - MAXIMUM READABILITY */
+    /* 🚨 THE VISIBILITY FIX FOR TEXT AREAS AND INPUTS 🚨 */
+    /* This targets Streamlit's deep wrappers and forces pure white text */
+    .stTextInput input, 
+    .stTextArea textarea, 
+    [data-baseweb="base-input"] input, 
+    [data-baseweb="textarea"] textarea,
     textarea, input {
-        background: #080318 !important; 
-        border: 2px solid rgba(0, 240, 255, 0.5) !important;
+        background-color: #000000 !important; 
+        border: 2px solid #00F0FF !important;
         color: #FFFFFF !important; 
+        -webkit-text-fill-color: #FFFFFF !important; /* Forces browser to paint text white */
         font-family: 'Courier New', Courier, monospace !important;
-        font-size: 15px !important;
-        font-weight: bold !important;
+        font-size: 16px !important;
+        font-weight: 900 !important; /* Maximum thickness */
+        opacity: 1 !important;
         border-radius: 4px !important;
     }
-    textarea:focus, input:focus {
+    
+    .stTextInput input:focus, 
+    .stTextArea textarea:focus {
         border-color: #B000FF !important;
-        box-shadow: 0 0 10px rgba(176, 0, 255, 0.5) !important;
-        background: #05010F !important;
+        box-shadow: 0 0 15px #B000FF !important;
     }
 
     /* Animated Gradient Buttons */
@@ -94,62 +99,64 @@ st.markdown("""
         background: linear-gradient(90deg, #4A00E0 0%, #8E2DE2 50%, #00F0FF 100%) !important;
         background-size: 200% auto !important;
         color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
         font-family: 'Orbitron', sans-serif !important;
         font-weight: 900 !important;
-        font-size: 1.1rem !important;
+        font-size: 1.2rem !important;
         border: none !important;
         border-radius: 4px !important;
         height: 3.5rem; 
         width: 100%;
         transition: 0.4s !important;
-        text-transform: uppercase;
         letter-spacing: 2px;
     }
     .stButton button:hover {
         background-position: right center !important;
-        box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
-        transform: scale(1.02);
+        box-shadow: 0 0 25px #00F0FF !important;
     }
 
     /* Secondary Download Button */
     div[data-testid="stDownloadButton"] button {
-        background: rgba(0, 240, 255, 0.1) !important;
+        background: #001520 !important;
         border: 2px solid #00F0FF !important;
         color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
     }
     div[data-testid="stDownloadButton"] button:hover {
-        background: rgba(0, 240, 255, 0.3) !important;
-        box-shadow: 0 0 15px rgba(0, 240, 255, 0.5) !important;
+        background: #00F0FF !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
     }
 
     /* Glowing Health Metric */
     [data-testid="stMetricValue"] {
         font-family: 'Orbitron', sans-serif !important;
         color: #FFFFFF !important;
-        text-shadow: 0 0 15px #B000FF !important;
-        font-size: 3.5rem !important;
-        font-weight: bold;
-    }
-    [data-testid="stMetricLabel"] { 
-        color: #00F0FF !important; 
-        font-size: 1.2rem !important; 
-        font-family: 'Orbitron', sans-serif !important;
-        font-weight: bold;
+        -webkit-text-fill-color: #FFFFFF !important;
+        text-shadow: 0 0 20px #B000FF !important;
+        font-size: 4rem !important;
+        font-weight: 900 !important;
     }
 
     /* Threat Containers */
     [data-testid="stVerticalBlockBorderWrapper"] {
-        border: 1px solid rgba(255, 0, 60, 0.6) !important;
+        border: 1px solid #FF003C !important;
         background: rgba(255, 0, 60, 0.1) !important;
-        border-radius: 4px !important;
     }
 
     /* Dataframe/Table Readability */
-    [data-testid="stDataFrame"] {
-        background-color: #080318 !important;
+    [data-testid="stDataFrame"] { background-color: #000000 !important; }
+    .stDataFrame th { 
+        color: #00F0FF !important; 
+        -webkit-text-fill-color: #00F0FF !important;
+        font-family: 'Orbitron', sans-serif !important; 
+        font-weight: 900 !important;
     }
-    .stDataFrame th { color: #00F0FF !important; font-family: 'Orbitron', sans-serif !important; }
-    .stDataFrame td { color: #FFFFFF !important; }
+    .stDataFrame td { 
+        color: #FFFFFF !important; 
+        -webkit-text-fill-color: #FFFFFF !important;
+        font-weight: 700 !important;
+    }
 
     /* Hide Native UI Mechanics */
     #MainMenu, footer, header {visibility: hidden;}
